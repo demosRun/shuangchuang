@@ -1,0 +1,927 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Language" content="utf-8" />
+<meta content="all" name="robots" />
+<title>2019双新双创博览会--人民创投--人民网</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="filetype" content="1" />
+<meta name="publishedtype" content="1" />
+<meta name="pagetype" content="2" />
+<meta name="catalogs" content="430424" />
+<!-- 调用样式表 -->
+<link rel="stylesheet" href="http://cms.peopleurl.cn/img/MAIN/2016/05/116414/page.css" type="text/css" media="all"  />
+<script type="text/javascript" src="http://cms.peopleurl.cn/img/MAIN/2016/05/116414/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="http://cms.peopleurl.cn/img/MAIN/2016/05/116414/js/jcarousellite.js"></script>
+<script type="text/javascript" src="http://cms.peopleurl.cn/img/MAIN/2016/05/116414/js/jdt.js"></script>
+<script type="text/javascript" src="http://cms.peopleurl.cn/img/MAIN/2016/05/116414/js/main.js"></script>
+<script type="text/javascript">
+(function($){
+	$.fn.Tab = function(options){
+		var defaults = {
+			ChangeTime : 3000,
+			Obutton : false,
+			Prev : null,
+			Next : null
+		};
+
+		var opts = $.extend(defaults, options);
+		
+		return this.each(function(){
+			var oThis = $(this);
+			var index = 0;
+			var timer;
+			var cTimer = opts.ChangeTime;
+			var len = $('ul li',oThis).length;
+			
+			
+			if (opts.Obutton){
+				var arr = [];
+				arr.push('<ol>')
+				for(i = 1; i <= $('li',oThis).length; i++){
+					arr.push('<li>' +  i + '</li>');
+				};
+				arr.push('</ol>');
+				var _IndexBtnHtml = $(arr.join(''));
+				oThis.append(_IndexBtnHtml);
+			}else{
+				oThis.append(document.createElement("ol"));
+				$('ol',oThis).html($('ul',oThis).html());
+				$('ol a',oThis).click(function(evt){
+					evt.preventDefault();
+				})
+			}
+			
+			$('ol li',oThis).click(function(){
+				index = $('ol li',oThis).index(this);
+				showPic(index);
+			}).eq(0).click();
+		
+			oThis.hover(function(){
+				clearInterval(timer);
+				},function(){
+					timer = setInterval(function(){
+						showPic(index);
+						index++;
+						
+						if(index==len){index=0;}
+				},cTimer)
+			}).trigger("mouseleave");
+			
+			function showPic(index){
+				$('ol li',oThis).removeClass("active").eq(index).addClass("active");
+				$('ul li',oThis).eq(index).stop(true,true).fadeIn(600).siblings("li").fadeOut(600);
+			};
+			
+			if(opts.Prev&&opts.Next){
+				var leftclass = opts.Prev.replace(/^./, '');
+				var rightclass = opts.Next.replace(/^./, '');
+				var btn = "<div class="+ leftclass +"></div>";
+				btn += "<div class="+ rightclass +"></div>";
+				oThis.append(btn);
+			}
+			
+			if (opts.Prev){
+				$(opts.Prev).click(function(){
+					index--;
+					if(index==-1){index=len-1;}
+					showPic(index);
+					//alert(index)
+				})
+				$(opts.Prev).click(function(evt){
+					evt.preventDefault();
+				});
+			}
+			if (opts.Next){
+				$(opts.Next).click(function(){
+					index++;
+					if(index==len){index=0;}
+					showPic(index);
+					//alert(index)
+				})
+				$(opts.Next).click(function(evt){
+					evt.preventDefault();
+				});
+			}
+			
+		});
+	};
+})(jQuery);
+
+$(function(){
+try{
+	$("#topBox").Tab({
+		ChangeTime: 4000,//转播时间
+		Obutton : true, // true：数字、圆点；false：缩略图
+		Prev : ".topprev",
+		Next : ".topnext"
+	});
+}catch(e){}
+})
+</script>
+
+<!-- 增加的内容 -->
+<script>
+try{
+  $(function () {
+    $(".show-image").jCarouselLite({
+      // btnNext: ".next",
+      // btnPrev: ".prev",
+      visible: 2,
+      onMouse: true,
+      btCtrlVisible:1,
+      auto:3000
+      
+    });
+  })
+	
+}catch(e){console.log(e)}
+
+$(function(){
+  try {
+    var index = 0;
+    var timer;
+    var len = $("#box2 ul li").length;
+    
+    for(i=0;i<len;i++)
+    {
+      var arr = [];
+      arr.push("<ol>")
+      for(i = 1; i <= len; i++){
+        arr.push("<li>" + "</li>");
+      };
+      arr.push("</ol>");
+      var _IndexBtnHtml = $(arr.join(''));
+      $("#box2").append(_IndexBtnHtml);
+    }
+    
+    $("#box2 ol li").click(function(){
+      index = $("#box2 ol li").index(this);
+      showPic(index);
+    }).eq(0).click();
+    
+    $("#box2").hover(function(){
+      clearInterval(timer);
+    },function(){
+      timer = setInterval(function(){
+        showPic(index);
+        index++;
+        if(index==len){index=0;}
+      },3000)
+    }).trigger("mouseleave");
+    
+    function showPic(index){
+      $("#box2 ol li").removeClass("active").eq(index).addClass("active");
+      $("#box2 ul li").eq(index).stop(true,true).fadeIn(600).siblings("li").fadeOut(600);
+    };
+  } catch(e){console.log(e)}
+});
+
+$(function(){
+  try {
+    var index = 0;
+    var timer;
+    var len = $("#box1 ul li").length;
+    
+    for(i=0;i<len;i++)
+    {
+      var arr = [];
+      arr.push("<ol>")
+      for(i = 1; i <= len; i++){
+        arr.push("<li>" + "</li>");
+      };
+      arr.push("</ol>");
+      var _IndexBtnHtml = $(arr.join(''));
+      $("#box1").append(_IndexBtnHtml);
+    }
+    
+    $("#box1 ol li").click(function(){
+      index = $("#box1 ol li").index(this);
+      showPic(index);
+    }).eq(0).click();
+    
+    $("#box1").hover(function(){
+      clearInterval(timer);
+    },function(){
+      timer = setInterval(function(){
+        showPic(index);
+        index++;
+        if(index==len){index=0;}
+      },3000)
+    }).trigger("mouseleave");
+    
+    function showPic(index){
+      $("#box1 ol li").removeClass("active").eq(index).addClass("active");
+      $("#box1 ul li").eq(index).stop(true,true).fadeIn(600).siblings("li").fadeOut(600);
+    };
+  } catch(e){console.log(e)}
+});
+</script>
+
+<style type="text/css">
+.p1_content {background:none;}
+.p1_content h1 a:link,.p1_content h1 a:visited,.p1_content .list1 li a:link,.p1_content .list1 li a:visited,.list2 li a:link,.list2 li a:visited{color:#fff;}
+.banner {background: none;height: 400px;}
+.p1_left h3 span i{ display:block; width:130px; height:51px; float:left; margin-left:0px; text-align:center; font:bold 30px/54px "Mircosoft Yahei"; color:#009eff; border-bottom:3px solid #009eff;}
+.p1_left h3 span i a{color:#009eff; text-decoration:none;}
+.p1_left h3 span i.b0{ background:none;}
+.p1_left h3 span i.b1{ background:none;}
+.p1_left h3 span i.b2{ background:none;}
+.p1_left h3 span i.b0.this{ background:url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/title1Bg.jpg) center top no-repeat;}
+.p1_left h3 span i.b1.this{ background:url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/title1Bg.jpg) center top no-repeat;}
+.p1_left h3 span i.b2.this{ background:url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/title1Bg.jpg) center top no-repeat;}
+.p1_left h3 span i.this{ display:inline-block; width:156px; height:54px; color:#fff; text-align:left; text-indent:0.5em; border-bottom:none;}
+.p1_left h3 span i.this a{ color:#fff;}
+.copyright{ background:none;}
+.p1_right1 {padding-top: 0px;}
+.p1_right1 h3 {
+    border-bottom: 3px solid #009eff;
+	margin-bottom: 10px;
+	height: 51px;
+}
+.p1_right1 #tab1 span {
+    font:bold 30px/54px "Mircosoft Yahei";
+	color:#8ca3b1; 
+}
+.p1_right1 #tab1 span.this {
+	color:#009eff; 
+}
+.p2_con li p{
+	text-align:center;
+}
+.p3_content {
+    background: url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/qingdao/web_69.jpg) no-repeat top center;
+}
+.p3_content ol li {
+    width: 32px;
+}
+.b_left1,.b_right1{ cursor:pointer;}
+
+h3.one {
+    background: url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/qingdao/h3Bg.jpg) no-repeat top center;
+    font-size: 30px;
+    color: #fff;
+    padding-left: 20px;
+}
+.p4_content{
+	display:none;
+}
+.p4_a{ background:url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/d1.jpg);width:979px;height:148px;}
+.p4_content .class1{background:url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/d1.jpg);}
+.p4_content .class2{background:url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/d2.jpg);}
+.p4_content .class3{background:url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/d3.jpg);}
+.topFocus{ width:980px; height:630px; padding-top:20px; background: url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/focusBg.jpg) no-repeat top center;}
+#topBox{width:934px; height:620px; position:relative;}
+#topBox ul li{position:absolute; line-height:160%;}
+#topBox ul li img,#box ul li b{display:block;}
+#topBox ul li img,#box2 ul li b{display:block;}
+#topBox ul li img{ width:934px; height:527px;}
+#topBox ul li b{font-size:14px;padding-bottom:5px;}
+#topBox ul li span{width:934px; text-align:center; height:55px; display:block;font:bold 24px/55px "\5FAE\8F6F\96C5\9ED1";}
+#topBox ul li span a{ color:#fff;}
+#topBox ol{position:absolute;top:595px;right:440px;}
+#topBox ol li{ display:inline-block; width:16px; height:3px; background:#91ccee; overflow:hidden; float:left; text-align:center; cursor:pointer; margin:0 10px; text-indent:-9999px;}
+#topBox ol li.active{background:#56eeff;}
+#topBox div.topprev{ display:inline-block; width:57px; height:83px; position:absolute; top:250px; left:-23px; background:url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/focusLeft.png) top center no-repeat; cursor:pointer;}
+#topBox div.topnext{ display:inline-block; width:57px; height:83px; position:absolute; top:250px; right:-23px; background:url(http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/jinzhuan/focusRight.png) top center no-repeat; cursor:pointer;}
+/*20170825*/
+.p1_right {
+    padding: 12px 12px 5px 12px;
+}
+#box {
+  height: 323px;
+  overflow: hidden;
+}
+.share{
+    position: absolute;
+    top: 340px;
+    right: 0px;
+	padding: 5px;
+}
+.shareBg{
+	display:inline-block;
+	width:100%;
+	height:100%;
+    border-radius: 50px;
+	background:#fff;
+	opacity:.5;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:-1;
+}
+.ops_shareLayer .ops_tit{
+	color:#002f66;
+}
+.r_list {
+    top: auto;
+	bottom: 100px;
+}
+.nav_r div{ width:100px; height:60px; background:#7699cf; margin-bottom:10px; font:normal 16px/60px "Microsoft Yahei"; text-align:center; color:#fff;}
+.nav_r div a{color:#fff;}
+.p3_content .txt{
+	text-align:center;
+}
+.p3_content .txt p{
+	writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+	font: normal 26px/120% "Microsoft Yahei";
+	text-align: justify;
+	color: #1993f2;
+	margin: 0 auto;
+}
+.jCarouselLite1 li img{width:182px;height:287px}
+.jCarouselLite1 li.t2 img{top:0px;}
+#topBox ol li{ background:#d79439;}
+#topBox ol li.active{ background:#f4dcb5;}
+.p1_right1 .xczj ul li i{color:#721856}
+.jCarouselLite2 li i em.thisp{color:#4d0d41}
+</style>
+<style type="text/css">body{ background:url(http://cms.peopleurl.cn/NMediaFile/2019/1104/MAIN201911041414546925836387244.jpg) center 900px no-repeat;}
+h3.one{background:none;padding-left:0px}</style>
+</head>
+<body>
+<a name="top"></a>
+<div class="top01 clearfix">
+    <div class="w980"> <em><a href="http://www.people.com.cn/" target="_blank"><img src="http://cms.peopleurl.cn/img/MAIN/2016/05/116414/images/logo.gif" /></a></em> <i></i> </div>
+</div>
+<div class="banner"><div class="w980">
+<style type="text/css">
+.banner{ background:url(http://cms.peopleurl.cn/NMediaFile/2019/1104/MAIN201911041504126894223912294.png) no-repeat top center;height:1080px;}
+</style>
+
+<style>
+/* 增加的内容 */
+.video-box {
+  margin-top: 20px;
+  background-color: white;
+  padding: 20px 30px;
+}
+.video-box object {
+  height: 500px;
+  display: block;
+}
+.opposite .fr {
+  float: left;
+  margin-right: 15px;
+}
+.opposite .fl {
+  width: 410px;
+  float: right;
+}
+.topFocus {
+  margin-top: 20px;
+}
+.video-list-box {
+  margin: 0 auto;
+  background-color: white;
+  margin-top: 20px;
+}
+.video-list-box a, .video-list-box img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.video-list-box object {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.video-list-box li {
+  width: 220px;
+  height: 150px;
+  float: left;
+  margin: 20px 20px;
+  margin-right: 0;
+  position: relative;
+}
+.video-list-box .abs {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: block;
+  padding: 0 5px;
+  width: 210px;
+  color: white;
+  height: 25px;
+  line-height: 25px;
+  overflow: hidden;
+}
+.video-list-box .abs a {
+  float: left;
+  color: #ada7a7;
+  width: 185px;
+  overflow: hidden;
+}
+.video-list-box .abs .tvicon {
+  width: 19px;
+  height: 19px;
+  float: left;
+  margin: 3px;
+}
+.show-image li {
+  float: left;
+  margin: 0 10px;
+}
+.show-image ul {
+  width: 100%;
+}
+.show-image ul:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+.clear:after {
+  content: "";
+  height: 0;
+  line-height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+.show-image-box {
+  background-color: white;
+  padding: 20px 0;
+}
+.p1_right {
+  padding: 16px 14px 5px 12px;
+}
+#box1, #box2, #box {
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+.list1 {
+  padding-top: 4px;
+  padding-right: 8px;
+}
+.p1_right {
+  width: 528px;
+}
+.list1 li {
+  height: 42px;
+  line-height: 42px;
+}
+.p1_right ul li span {
+  top: 360px;
+  width: 400px;
+  left: 0;
+  display: inline-block;
+  text-align: left;
+  height: 55px;
+  display: block;
+  line-height: 55px;
+  font-size: 18px;
+  font: normal 18px/55px "\5FAE\8F6F\96C5\9ED1";
+}
+.p1_right ol {
+  position: absolute;
+  top: 317px;
+  right: 25px;
+}
+.p1_right ol li {
+  background: url(images/ball4.jpg) no-repeat;
+  float: left;
+  text-align: center;
+  height: 10px;
+  width: 10px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+</style>
+<!-- 修改结束 -->
+
+</div></div>
+
+<!--顶部焦点图-->
+<div class="topFocus">
+	<div id="topBox">
+    <ul><li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1106/MAIN201911061539417191725050116.jpg" width="934" height="527" border="0" alt="中央农办主任、农业农村部部长韩长赋出席2018双新双创博览会"/><span>中央农办主任、农业农村部部长韩长赋出席2018双新双创博览会</span></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211958229696211183040.jpg" width="934" height="527" border="0" alt="2018年博览会上多部门领导聆听双新双创讲解"/><span>2018年博览会上多部门领导聆听双新双创讲解</span></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211958226242593074054.jpg" width="934" height="527" border="0" alt="2018年博览会上多部门领导聆听双新双创讲解"/><span>2018年博览会上多部门领导聆听双新双创讲解</span></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211958223030199072621.jpg" width="934" height="527" border="0" alt="2018年博览会上多部门领导聆听双新双创讲解"/><span>2018年博览会上多部门领导聆听双新双创讲解</span></li>
+</ul>
+	</div>
+</div>
+<!--要闻-->
+<a name="yaowen"></a>
+<div class="p1_content o_h mt30">
+<div class="w980">
+
+<h1><a href='NewsView.shtml?id=31341474' target="_blank">2019年全国新农民新技术创业创新博览会将于南京举办</a>
+</h1>
+<div class="p1_left fl">
+
+<ul class="list1"><li><i></i><a href="http://opinion.people.com.cn/n1/2018/0928/c1003-30318777.html" target="_blank">人民网评：让乡村振兴规划愿景成美丽现实</a></li><li><i></i><a href='NewsView.shtml?id=31368176' target="_blank">农村农业创业投资论坛将于11月19日举办</a></li>
+<li><i></i><a href='NewsView.shtml?id=31389929' target="_blank">数字农业农村新技术展望论坛将举办</a></li>
+<li><i></i><a href='NewsView.shtml?id=31389943' target="_blank">农村三产融合:新趋势和新挑战论坛将召开</a></li>
+<li><i></i><a href='NewsView.shtml?id=31389883' target="_blank">大咖传经！抓住乡村产业振兴的时代机遇</a></li>
+<li><i></i><a href='NewsView.shtml?id=31389894' target="_blank">农村环境整治暨农村厕所革命论坛即将开幕</a></li>
+<li><i></i><a href='NewsView.shtml?id=31389799' target="_blank">“政企畅谈”分论坛将于南京举办</a></li>
+<li><i></i><a href='NewsView.shtml?id=31389877' target="_blank">农村改厕技术创新大赛决赛将于南京举行</a></li>
+</ul>
+
+</div>
+<div class="p1_right fr">
+<div id="box1">
+    <ul>
+        <li><a href="http://v.people.cn/n1/2019/1105/c14644-31438967.html" target="_blank"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071113587491820709285.jpg" width="534" height="295" border="0" alt="视频专访：曾衍德司长解读乡村产业振兴政策"/></a><span><a href="http://v.people.cn/n1/2019/1105/c14644-31438967.html" target="_blank">视频专访：曾衍德司长解读乡村产业振兴政策</a></span></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071018093258013460805.jpg" width="534" height="295" border="0" alt="2019全国新农民新技术创业创新博览会举办通知"/><span><a href="http://www.moa.gov.cn/govpublic/XZQYJ/201909/t20190905_6327328.htm" target="_blank">2019全国新农民新技术创业创新博览会举办通知</a></span></li>
+<li><a href="http://capital.people.com.cn/n1/2019/1021/c405954-31411912.html" target="_blank"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211906148503278007102.jpg" width="534" height="295" border="0" alt="2019全国农村创业创新大赛半决赛顺利结束"/></a><span><a href="http://capital.people.com.cn/n1/2019/1021/c405954-31411912.html" target="_blank">2019全国农村创业创新大赛半决赛顺利结束</a></span></li>
+<li><a href="http://capital.people.com.cn/n1/2019/1012/c405954-31396508.html" target="_blank"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1106/MAIN201911061613545418325579469.jpg" width="534" height="295" border="0" alt="2019全国农村创业创新大赛半决赛成果斐然"/></a><span><a href="http://capital.people.com.cn/n1/2019/1012/c405954-31396508.html" target="_blank"><a href="http://capital.people.com.cn/n1/2019/1012/c405954-31396508.html" target="_blank">2019全国农村创业创新大赛半决赛成果斐然</a></a></span></li>
+
+        
+    </ul>
+</div>
+</div>
+  <div class="clear"></div>
+  </div>
+</div>
+
+
+<!-- 修改开始 -->
+<!-- 主论坛 -->
+<div class="main-bar mt20 w980">
+    <h3 id=""><img src="./title-add-1.png" width="980" height="66"></h3>
+    <div class="video-box">
+      <object id="RMW_VBLOG_PLAYER_0" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="100%" height="100%" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"><param name="movie" value="http://vblog.people.com.cn/includes/js/vblogPlayerV4.swf"><param name="FlashVars" value="pid=20191106_5848_dbhc_vpmq&amp;divid=videoplayerdiv&amp;autoplay=true&amp;test=true&amp;width=100%25&amp;height=100%25&amp;skin=1%2C0%2C1%2C1&amp;norecomm=true&amp;noad=true&amp;logo="><param name="wmode" value="opaque"><param name="allowScriptAccess" value="always"><param name="allowFullScreen" value="true"><embed name="RMW_VBLOG_PLAYER_0" width="100%" height="100%" src="http://vblog.people.com.cn/includes/js/vblogPlayerV4.swf" wmode="opaque" allowfullscreen="true" allowscriptaccess="always" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" flashvars="pid=20191106_5848_dbhc_vpmq&amp;divid=videoplayerdiv&amp;autoplay=true&amp;test=true&amp;width=100%25&amp;height=100%25&amp;skin=1%2C0%2C1%2C1&amp;norecomm=true&amp;noad=true&amp;logo=" type="application/x-shockwave-flash"></object>
+    </div>
+    <div class="p1_content o_h mt30 opposite">
+      <div class="w980">
+      
+      <h1><a href="NewsView.shtml?id=31341474" target="_blank">2019年全国新农民新技术创业创新博览会将于南京举办</a>
+      </h1>
+      <div class="p1_left fl">
+      
+      <ul class="list1"><li><i></i><a href="http://opinion.people.com.cn/n1/2018/0928/c1003-30318777.html" target="_blank">人民网评：让乡村振兴规划愿景成美丽现实</a></li><li><i></i><a href="NewsView.shtml?id=31368176" target="_blank">农村农业创业投资论坛将于11月19日举办</a></li>
+      <li><i></i><a href="NewsView.shtml?id=31389929" target="_blank">数字农业农村新技术展望论坛将举办</a></li>
+      <li><i></i><a href="NewsView.shtml?id=31389943" target="_blank">农村三产融合:新趋势和新挑战论坛将召开</a></li>
+      <li><i></i><a href="NewsView.shtml?id=31389883" target="_blank">大咖传经！抓住乡村产业振兴的时代机遇</a></li>
+      <li><i></i><a href="NewsView.shtml?id=31389894" target="_blank">农村环境整治暨农村厕所革命论坛即将开幕</a></li>
+      <li><i></i><a href="NewsView.shtml?id=31389799" target="_blank">“政企畅谈”分论坛将于南京举办</a></li>
+      <li><i></i><a href="NewsView.shtml?id=31389877" target="_blank">农村改厕技术创新大赛决赛将于南京举行</a></li>
+      </ul>
+      
+      </div>
+      <div class="p1_right fr">
+      <div id="box2">
+          <ul>
+              <li style="display: list-item;"><a href="http://v.people.cn/n1/2019/1105/c14644-31438967.html" target="_blank"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071113587491820709285.jpg" width="534" height="295" border="0" alt="视频专访：曾衍德司长解读乡村产业振兴政策"></a><span><a href="http://v.people.cn/n1/2019/1105/c14644-31438967.html" target="_blank">视频专访：曾衍德司长解读乡村产业振兴政策</a></span></li>
+      <li style="display: none;"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071018093258013460805.jpg" width="534" height="295" border="0" alt="2019全国新农民新技术创业创新博览会举办通知"><span><a href="http://www.moa.gov.cn/govpublic/XZQYJ/201909/t20190905_6327328.htm" target="_blank">2019全国新农民新技术创业创新博览会举办通知</a></span></li>
+      <li style="display: none;"><a href="http://capital.people.com.cn/n1/2019/1021/c405954-31411912.html" target="_blank"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211906148503278007102.jpg" width="534" height="295" border="0" alt="2019全国农村创业创新大赛半决赛顺利结束"></a><span><a href="http://capital.people.com.cn/n1/2019/1021/c405954-31411912.html" target="_blank">2019全国农村创业创新大赛半决赛顺利结束</a></span></li>
+      <li style="display: none;"><a href="http://capital.people.com.cn/n1/2019/1012/c405954-31396508.html" target="_blank"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1106/MAIN201911061613545418325579469.jpg" width="534" height="295" border="0" alt="2019全国农村创业创新大赛半决赛成果斐然"></a><span><a href="http://capital.people.com.cn/n1/2019/1012/c405954-31396508.html" target="_blank"></a><a href="http://capital.people.com.cn/n1/2019/1012/c405954-31396508.html" target="_blank">2019全国农村创业创新大赛半决赛成果斐然</a></span></li>
+      
+              
+          </ul>
+      <ol><li class="active"></li><li class=""></li><li class=""></li><li class=""></li></ol></div>
+      </div>
+      <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  <!-- 修改结束 -->
+  
+
+
+
+
+<!--ad-->
+
+<!--要闻1-->
+<div class="p1_content o_h mt30" style="display:none;">
+<div class="w980">
+
+<div class="p1_left fl mt10">
+
+
+<ul class="list2 mt10">
+
+</ul>
+</div> 
+<div class="p1_right1 fr  mt10">
+
+<div class="tabcon1 xczj">
+
+
+</div>
+<div class="tabcon1">
+
+</div>
+</div>
+</div>
+</div>
+<!--嵌套直播-->
+<div class="p_ifzb w980" style="display:none;">
+	<div class="zb_tit">
+    	
+    </div>
+    <div class="zb_con">
+    	
+    </div>
+</div>
+<!--图解新闻-->
+<a name="tujie"></a>
+<div class="p2_content mt20 w980">
+<h3  id=""><img src="http://cms.peopleurl.cn/NMediaFile/2019/1104/MAIN201911041531587252220678333.png" width="980" height="66" /></h3>
+<div class="p2_con">
+<ul><li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211938060825075136896.jpg" width="305" height="180" border="0" alt="农业农村部党组副书记副部长余欣荣"/><p>农业农村部党组副书记副部长余欣荣</p></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211945342427663833285.jpg" width="305" height="180" border="0" alt="江苏省委书记娄勤俭"/><p>江苏省委书记娄勤俭</p></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211940012479117625463.jpg" width="305" height="180" border="0" alt="广东省副省长叶贞琴"/><p>广东省副省长叶贞琴</p></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211938396582729939893.jpg" width="305" height="180" border="0" alt="江苏省委常委市委书记张敬华"/><p>江苏省委常委市委书记张敬华</p></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211943270308938141357.jpg" width="305" height="180" border="0" alt="四川省金堂县委常委钟成基"/><p>四川省金堂县委常委钟成基</p></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211937275100680457814.jpg" width="305" height="180" border="0" alt="阿里云农业智能中国区业务总经理郑斌"/><p>阿里云农业智能中国区业务总经理郑斌</p></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211941217938587890469.jpg" width="305" height="180" border="0" alt="新希望常务副总裁、首席运营官李建雄"/><p>新希望常务副总裁、首席运营官李建雄</p></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211942061201635353282.jpg" width="305" height="180" border="0" alt="吉福思（中国）罗汉果有限公司总裁蓝福生"/><p>吉福思（中国）罗汉果有限公司总裁蓝福生</p></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211942232900638641624.jpg" width="305" height="180" border="0" alt="江苏沃田集团股份有限公司董事长徐烨"/><p>江苏沃田集团股份有限公司董事长徐烨</p></li>
+</ul>
+</div>
+</div>
+
+
+<!-- 修改开始 -->
+<div class="main-bar mt20 w980">
+  <h3 id=""><img src="./title-add-2.png" width="980" height="66"></h3>
+</div>
+<div class="p1_content o_h mt30">
+  <div class="w980">
+  
+  <h1><a href="NewsView.shtml?id=31341474" target="_blank">2019年全国新农民新技术创业创新博览会将于南京举办</a>
+  </h1>
+  <div class="p1_left fl">
+  
+  <ul class="list1"><li><i></i><a href="http://opinion.people.com.cn/n1/2018/0928/c1003-30318777.html" target="_blank">人民网评：让乡村振兴规划愿景成美丽现实</a></li><li><i></i><a href="NewsView.shtml?id=31368176" target="_blank">农村农业创业投资论坛将于11月19日举办</a></li>
+  <li><i></i><a href="NewsView.shtml?id=31389929" target="_blank">数字农业农村新技术展望论坛将举办</a></li>
+  <li><i></i><a href="NewsView.shtml?id=31389943" target="_blank">农村三产融合:新趋势和新挑战论坛将召开</a></li>
+  <li><i></i><a href="NewsView.shtml?id=31389883" target="_blank">大咖传经！抓住乡村产业振兴的时代机遇</a></li>
+  <li><i></i><a href="NewsView.shtml?id=31389894" target="_blank">农村环境整治暨农村厕所革命论坛即将开幕</a></li>
+  <li><i></i><a href="NewsView.shtml?id=31389799" target="_blank">“政企畅谈”分论坛将于南京举办</a></li>
+  <li><i></i><a href="NewsView.shtml?id=31389877" target="_blank">农村改厕技术创新大赛决赛将于南京举行</a></li>
+  </ul>
+  
+  </div>
+  <div class="p1_right fr">
+  <div id="box">
+      <ul>
+          <li style="display: list-item;"><a href="http://v.people.cn/n1/2019/1105/c14644-31438967.html" target="_blank"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071113587491820709285.jpg" width="534" height="295" border="0" alt="视频专访：曾衍德司长解读乡村产业振兴政策"></a><span><a href="http://v.people.cn/n1/2019/1105/c14644-31438967.html" target="_blank">视频专访：曾衍德司长解读乡村产业振兴政策</a></span></li>
+  <li style="display: none;"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071018093258013460805.jpg" width="534" height="295" border="0" alt="2019全国新农民新技术创业创新博览会举办通知"><span><a href="http://www.moa.gov.cn/govpublic/XZQYJ/201909/t20190905_6327328.htm" target="_blank">2019全国新农民新技术创业创新博览会举办通知</a></span></li>
+  <li style="display: none;"><a href="http://capital.people.com.cn/n1/2019/1021/c405954-31411912.html" target="_blank"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1021/MAIN201910211906148503278007102.jpg" width="534" height="295" border="0" alt="2019全国农村创业创新大赛半决赛顺利结束"></a><span><a href="http://capital.people.com.cn/n1/2019/1021/c405954-31411912.html" target="_blank">2019全国农村创业创新大赛半决赛顺利结束</a></span></li>
+  <li style="display: none;"><a href="http://capital.people.com.cn/n1/2019/1012/c405954-31396508.html" target="_blank"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1106/MAIN201911061613545418325579469.jpg" width="534" height="295" border="0" alt="2019全国农村创业创新大赛半决赛成果斐然"></a><span><a href="http://capital.people.com.cn/n1/2019/1012/c405954-31396508.html" target="_blank"></a><a href="http://capital.people.com.cn/n1/2019/1012/c405954-31396508.html" target="_blank">2019全国农村创业创新大赛半决赛成果斐然</a></span></li>
+  
+          
+      </ul>
+  <ol><li class="active"></li><li class=""></li><li class=""></li><li class=""></li></ol></div>
+  </div>
+  <div class="clear"></div>
+  </div>
+</div>
+
+
+
+<!-- 精彩视频 -->
+<div class="main-bar mt20 w980">
+  <h3 id=""><img src="./title-add-3.png" width="980" height="66"></h3>
+</div>
+
+<ul class="video-list-box w980 clear">
+  <li>
+    <a href="#">
+      <img width="125" height="95" src="http://www.people.com.cn/NMediaFile/2019/1109/MAIN201911091313004071550130959.jpg">
+    </a>
+    <p class="abs clear"><img class="tvicon" src="http://www.people.com.cn/img/2016people/images/tvicon.png"><a href="http://v.people.cn/n1/2019/1109/c413792-31446292.html">“带货”洋主播</a></p>
+  </li>
+  <li>
+    <a href="#">
+      <img width="125" height="95" src="http://www.people.com.cn/NMediaFile/2019/1109/MAIN201911091313004071550130959.jpg">
+    </a>
+    <p class="abs clear"><img class="tvicon" src="http://www.people.com.cn/img/2016people/images/tvicon.png"><a href="http://v.people.cn/n1/2019/1109/c413792-31446292.html">“带货”洋主播</a></p>
+  </li>
+  <li>
+    <a href="#">
+      <img width="125" height="95" src="http://www.people.com.cn/NMediaFile/2019/1109/MAIN201911091313004071550130959.jpg">
+    </a>
+    <p class="abs clear"><img class="tvicon" src="http://www.people.com.cn/img/2016people/images/tvicon.png"><a href="http://v.people.cn/n1/2019/1109/c413792-31446292.html">“带货”洋主播</a></p>
+  </li>
+  <li>
+    <a href="#">
+      <img width="125" height="95" src="http://www.people.com.cn/NMediaFile/2019/1109/MAIN201911091313004071550130959.jpg">
+    </a>
+    <p class="abs clear"><img class="tvicon" src="http://www.people.com.cn/img/2016people/images/tvicon.png"><a href="http://v.people.cn/n1/2019/1109/c413792-31446292.html">“带货”洋主播</a></p>
+  </li>
+  <li>
+    <a href="#">
+      <img width="125" height="95" src="http://www.people.com.cn/NMediaFile/2019/1109/MAIN201911091313004071550130959.jpg">
+    </a>
+    <p class="abs clear"><img class="tvicon" src="http://www.people.com.cn/img/2016people/images/tvicon.png"><a href="http://v.people.cn/n1/2019/1109/c413792-31446292.html">“带货”洋主播</a></p>
+  </li>
+  <li>
+    <a href="#">
+      <img width="125" height="95" src="http://www.people.com.cn/NMediaFile/2019/1109/MAIN201911091313004071550130959.jpg">
+    </a>
+    <p class="abs clear"><img class="tvicon" src="http://www.people.com.cn/img/2016people/images/tvicon.png"><a href="http://v.people.cn/n1/2019/1109/c413792-31446292.html">“带货”洋主播</a></p>
+  </li>
+  <li>
+    <a href="#">
+      <img width="125" height="95" src="http://www.people.com.cn/NMediaFile/2019/1109/MAIN201911091313004071550130959.jpg">
+    </a>
+    <p class="abs clear"><img class="tvicon" src="http://www.people.com.cn/img/2016people/images/tvicon.png"><a href="http://v.people.cn/n1/2019/1109/c413792-31446292.html">“带货”洋主播</a></p>
+  </li>
+  <li>
+    <a href="#">
+      <img width="125" height="95" src="http://www.people.com.cn/NMediaFile/2019/1109/MAIN201911091313004071550130959.jpg">
+    </a>
+    <p class="abs clear"><img class="tvicon" src="http://www.people.com.cn/img/2016people/images/tvicon.png"><a href="http://v.people.cn/n1/2019/1109/c413792-31446292.html">“带货”洋主播</a></p>
+  </li>
+</ul>
+
+
+<!-- 分省展示 -->
+<div class="main-bar mt20 w980">
+  <h3 id=""><img src="./title-add-4.png" width="980" height="66"></h3>
+</div>
+
+<div class="show-image-box mt20 w980">
+  <div class="show-image">
+      <ul>
+        <li><a href="#"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071018093258013460805.jpg" width="460" height="300" border="0"></a></li>
+        <li><a href="#"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071018093258013460805.jpg" width="460" height="300" border="0"></a></li>
+        <li><a href="#"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071018093258013460805.jpg" width="460" height="300" border="0"></a></li>
+        <li><a href="#"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071018093258013460805.jpg" width="460" height="300" border="0"></a></li>
+        <li><a href="#"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071018093258013460805.jpg" width="460" height="300" border="0"></a></li>
+        <li><a href="#"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071018093258013460805.jpg" width="460" height="300" border="0"></a></li>
+      </ul>
+    </div>
+</div>
+<!-- 修改结束 -->
+
+
+
+
+
+<!--视频报道-->
+<a name="shipin"></a>
+<div class="p7_content w980 mt20 o_h" style="display:none;">
+<h3 class="one"></h3>
+<div class="p7_con o_h">
+<div class="p7_left fl">
+<script src="http://cms.peopleurl.cn/img/2011ptv2/showPeopleVideoPlayerMulti01.js" type="text/javascript"></script>
+<script>//视频嵌入代码
+showPlayer({id:"", width:534,height:429,autoplay:0,skip:false,showid:"pvpShowDiv"});
+</script>
+</div>
+  <div class="p7_right fr">
+  <ul>
+      
+  </ul>  
+  </div>
+</div>
+</div>
+
+<!--ad-->
+
+<!--切换新闻-->
+<a name="jizhe"></a>
+<div class="p3_content mt20 w980" style="display:none;">
+
+<div class="txt"><p></p></div>
+<ol>
+</ol>
+
+</div>
+<!--实时解读-->
+<a name="shishi"></a>
+<div class="p4_content mt20 w980">
+<h3 class="one">实时解读</h3>
+<div class="p4_a">
+
+</div>
+<a name="p4fy"></a>
+<div class="p4_b">
+
+</div>
+<div class="p4_b">
+
+</div>
+<div class="p4_b">
+
+</div>
+</div>
+<!--高清全纪录-->
+<a name="tupian"></a>
+<div class="p5_content mt20 w980">
+<h3  id=""><img src="http://cms.peopleurl.cn/NMediaFile/2019/1104/MAIN201911041538081716813652190.png" width="980" height="66" /></h3>
+<div class="p5_con jCarouselLite2">
+<ul class="clearfix"><li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071034472112831376186.jpg" width="980" height="600" border="0"/><font face="楷体" size="4">博览会往期图片回顾</font><i><em class="thisp"></em>/<em class="allp"></em></i></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071034468933223030953.jpg" width="980" height="600" border="0"/><font face="楷体" size="4">博览会往期图片回顾</font><i><em class="thisp"></em>/<em class="allp"></em></i></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071034479210737653000.jpg" width="980" height="600" border="0"/><font face="楷体" size="4">博览会往期图片回顾</font><i><em class="thisp"></em>/<em class="allp"></em></i></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071034475793573388721.jpg" width="980" height="600" border="0"/><font face="楷体" size="4">博览会往期图片回顾</font><i><em class="thisp"></em>/<em class="allp"></em></i></li>
+<li><img src="http://cms.peopleurl.cn/NMediaFile/2019/1107/MAIN201911071034482356111758395.jpg" width="980" height="600" border="0"/><font face="楷体" size="4">博览会往期图片回顾</font><i><em class="thisp"></em>/<em class="allp"></em></i></li>
+</ul>
+</div>
+<div class="p6_bt">
+<div class="prev1 b_left1" ><img src="/img/MAIN/2015/04/115430/images/l_bt1.png"  /></div>
+<div class="next1 b_right1" ><img src="/img/MAIN/2015/04/115430/images/r_bt1.png" /></div>
+</div>
+</div>
+<!--强国访谈-->
+<a name="qiangguo"></a>
+
+<!--ad-->
+
+<!--出访新闻-->
+<div class="p7_content p8_content w980 mt20 o_h" >
+<h3 id="xgnews" class="one">&nbsp;</h3>
+<style type="text/css">
+#xgnews{display:none;}
+</style><h3 style="margin-bottom:20px;"><img src="http://cms.peopleurl.cn/NMediaFile/2019/1104/MAIN201911041547465056772249118.png" width="980" height="66" /></h3>
+<div class="bgwhite clearfix">
+<div class="p8_left fl mt20">
+<div class="p8_a">
+<h3>论坛新闻</h3>
+<ul class="list_14"><li><a href='NewsView.shtml?id=31389799' target="_blank">2019双新双创博览会“政企畅谈”分论坛将于南京举办</a></li>
+<li><a href='NewsView.shtml?id=31389883' target="_blank">大咖传经！抓住乡村产业振兴的时代机遇</a></li>
+<li><a href='NewsView.shtml?id=31389894' target="_blank">农村人居环境整治工作各项重点任务成效显著</a></li>
+<li><a href='NewsView.shtml?id=31389929' target="_blank">2019数字农业农村新技术展望论坛将于南京举办</a></li>
+<li><a href='NewsView.shtml?id=31389943' target="_blank">农村三产融合:新趋势和新挑战论坛将召开</a></li>
+</ul>
+</div>
+<div class="p8_a">
+<h3>大赛新闻</h3>
+<ul class="list_14"><li><a href="http://country.people.com.cn/n1/2018/1108/c419842-30389823.html" target="_blank">广西第五届农民工技能大赛11月12日开赛</a></li><li><a href="http://country.people.com.cn/n1/2019/1030/c419842-31428734.html" target="_blank">第二届全国农民教育培训发展论坛在河南召开</a></li><li><a href='NewsView.shtml?id=31389877' target="_blank">首届全国农村改厕技术创新大赛决赛将举行</a></li>
+<li><a href="http://country.people.com.cn/n1/2019/0816/c419842-31299458.html" target="_blank">农业农村部农村社会事业专家咨询委员会成立</a></li><li><a href="http://country.people.com.cn/n1/2019/1104/c419842-31436731.html" target="_blank">2019年质量兴农高峰论坛在徐州举办</a></li><li><a href="http://country.people.com.cn/n1/2019/0430/c419842-31060517.html" target="_blank">全国新型职业农民培育三年提质增效行动启动</a></li></ul>
+</div>
+<div class="p8_a">
+<h3>展会新闻</h3>
+<ul class="list_14"><li><a href="http://country.people.com.cn/n1/2019/1020/c419842-31409571.html" target="_blank">让消费者享受更多“世界味道”</a></li><li><a href="http://country.people.com.cn/n1/2019/1020/c419842-31409564.html" target="_blank">第二届中国“乡博会”在长沙开幕</a></li><li><a href="http://rmfp.people.com.cn/n1/2019/1014/c406725-31399476.html" target="_blank">2019年扶贫日产业扶贫论坛在北京召开</a></li><li><a href="http://country.people.com.cn/n1/2019/1012/c419842-31396223.html" target="_blank">内蒙古·呼和浩特国际生态农牧业博览会开幕</a></li><li><a href="http://country.people.com.cn/n1/2019/1031/c419842-31430822.html" target="_blank">“乡村振兴 最美风采”全国农民摄影书法作品征集活动优秀作品展在京开幕</a></li></ul>
+</div>
+<div class="p8_a">
+<h3>农村创新</h3>
+<ul class="list_14"><li><a href="http://country.people.com.cn/n1/2019/0822/c419842-31310218.html" target="_blank">鄂尔多斯的文创密码</a></li><li><a href="http://country.people.com.cn/n1/2019/1020/c419842-31409564.html" target="_blank">第二届中国“乡博会”在长沙开幕</a></li><li><a href='NewsView.shtml?id=30240446' target="_blank">智慧农业成网红“海水稻”推手</a></li>
+<li><a href='NewsView.shtml?id=31042471' target="_blank">短视频改变农村和三四线城市</a></li>
+<li><a href='NewsView.shtml?id=30033470' target="_blank">农村电商融资达62亿元 缺乏品牌化成发展掣肘</a></li>
+<li><a href='NewsView.shtml?id=31034317' target="_blank">起飞的农产品！熊牛转换的周期要来了？</a></li>
+</ul>
+</div>
+
+
+<div class="p8_a">
+<h3>农村创业</h3>
+<ul class="list_14"><li><a href='NewsView.shtml?id=30417417' target="_blank">丁磊、马云之后，刘强东也来了 为何互联网大佬都要变身“猪农”</a></li>
+<li><a href='NewsView.shtml?id=31388688' target="_blank">“十一”黄金周交1.52万亿消费成绩单：电商会员、下沉市场、新零售成增长驱动</a></li>
+<li><a href='NewsView.shtml?id=30641682' target="_blank">五部门支持涉农企业IPO  上市中介费将降低</a></li>
+</ul>
+</div>
+<div class="p8_a">
+<h3>新时代新农村</h3>
+<ul class="list_14"><li><a href='NewsView.shtml?id=29834269' target="_blank">线下支付混战农村 “乡亲们”谁也躲不过</a></li>
+<li><a href='NewsView.shtml?id=29807443' target="_blank">人民时评：资本下乡，如何安农富农</a></li>
+<li><a href='NewsView.shtml?id=30424201' target="_blank">AI变身农业“医生” 问诊作物病虫害</a></li>
+<li><a href='NewsView.shtml?id=30438457' target="_blank">农村短视频，红火之后需思考</a></li>
+<li><a href='NewsView.shtml?id=30804490' target="_blank">手机上的农村“新生活”</a></li>
+</ul>
+</div>
+</div>
+<div class="p8_right fr  mt20">
+<h3>新时代新农村</h3>●乡村振兴战略持续实施推进，新时代农民正在就业创业中实现转型，农民企业家不断涌现，“全国2.8亿农民工进城打工，700万人到农村创业创新，并且还在快速增加”。
+<br>
+●“一人创业、带动致富”的农民创业景象正在形成，农民创业正成为减贫脱贫的活力新引擎和区域经济社会发展的新力量。
+<br>
+●当前农民创业的主体主要集中在返乡创业农民工群体。他们通过创业示范带动了其他农民脱贫致富，有效减少了贫困人口，推进了农民增收和乡村振兴。
+<br>
+●农民创业的资金来源主要有个人的家庭积蓄、向亲戚朋友借款、政府资金扶持、金融贷款等方面。创业融资渠道不畅仍然是制约创业的最大瓶颈。
+<br>
+●农民创业者组织化程度不高，区域优势资源整合能力不强。农民创业者更多是结合自身创业领域和经营经验自行组建农村合作社，合作社社员共同开拓市场和抵御市场风险。
+<br>
+●鼓励支持农民创业应五措并举——完善农民创业的专项政策支持；拓宽农民创业的融资渠道；搭建农民创业的资源共享平台；夯实农民创业的精准培训；注重农民创业的主体培育。
+<!--ad-->
+
+</div>
+</div>
+</div>
+
+
+
+<!--copy-->
+<div class="copyright clear mt30"><style type="text/css">
+#copyright{width:980px; margin:0px auto; font-size:12px; text-align:center; padding:20px 0; line-height:180%; clear:both;}
+</style>
+<div id="copyright">人 民 网 版 权 所 有 ，未 经 书 面 授 权 禁 止 使 用<br />
+Copyright &copy; 1997-2019 by www.people.com.cn. all rights reserved</div></div>
+<div class="r_list">
+<div class="er">
+  
+  </div>
+  <ul class="nav_r" id="daohang">
+  
+  </ul>
+
+   </div>
+<!-- <script src="http://tools.people.com.cn/css/2010tianrun/webdig_test.js" language="javascript" type="text/javascript" async></script> -->
+
+</body>
+</html>
